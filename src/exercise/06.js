@@ -1,6 +1,3 @@
-// useEffect: HTTP requests
-// http://localhost:3000/isolated/exercise/06.js
-
 import * as React from 'react'
 import {ErrorBoundary} from 'react-error-boundary'
 import {
@@ -10,22 +7,25 @@ import {
   fetchPokemon,
 } from '../pokemon'
 
-// class ErrorBoundary extends React.Component {
-//   state = {error: null}
+/*
+  CUSTOM ERROR BOUNDARY
 
-//   static getDerivedStateFromError(error) {
-//     return {error}
-//   }
+  class ErrorBoundary extends React.Component {
+  state = {error: null}
 
-//   render() {
-//     const {error} = this.state
-//     console.log('Error boundary', error)
-//     if (error) {
-//       return <this.props.fallback error={error} />
-//     }
-//     return this.props.children
-//   }
-// }
+  static getDerivedStateFromError(error) {
+    return {error}
+  }
+
+  render() {
+    const {error} = this.state
+    if (error) {
+      return <this.props.fallback error={error} />
+    }
+    return this.props.children
+  }
+}
+*/
 
 function pokemonInfoReducer(state, action) {
   switch (action.type) {
@@ -52,7 +52,6 @@ function pokemonInfoReducer(state, action) {
 }
 
 function PokemonInfo({pokemonName}) {
-  // check lection to see difference between putting in state
   const [state, dispatch] = React.useReducer(pokemonInfoReducer, {
     status: pokemonName ? 'pending' : 'idle',
     error: null,
